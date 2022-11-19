@@ -4,13 +4,17 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "server": "node ./bin/www",
+    "server": "node ./bin/server",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "debug": "^4.3.4",
     "express": "^4.18.2",
+    "http-errors": "^2.0.0",
+    "morgan": "^1.10.0",
     "prisma": "^4.6.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
