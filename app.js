@@ -6,6 +6,7 @@ import logger from 'morgan';
 
 //var indexRouter = require('./routes/index');
 //var usersRouter = require('./routes/users');
+import hospitalsRouter from './routes/hospitals.js';
 
 var app = express();
 
@@ -21,6 +22,7 @@ app.use(cookieParser());
 
 //app.use('/', indexRouter);
 //app.use('/users', usersRouter);
+app.use('/hospitals', hospitalsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
