@@ -73,11 +73,11 @@ export default function Checker() {
     };*/
 
     return (
-        <div className="md:mx-28 mx-4 pb-12 w-full">
+        <div className="md:mx-28 mx-4 pb-12 w-full ">
             <div className="sidebar">
                 Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
             </div>
-                <div ref={mapContainer} className="map-container w-full h-96 mb-6"/>
+                <div ref={mapContainer} className="map-container w-full h-[40rem] mb-6"/>
         </div>
     )
 }
