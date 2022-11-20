@@ -1,4 +1,5 @@
-import React, {useEffect, useRef, useState} from "react"
+import React, {useEffect, useRef, useState} from "react";
+import { useNavigate } from "react-router-dom";
 //import ReactDOM from "react-dom";
 import mapboxgl from 'mapbox-gl';
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
@@ -27,6 +28,7 @@ function GetMarker(onClick, hospital) {
 export default function Checker() {
     const mapContainer = useRef(null);
     const map = useRef(null);
+    const navigate = useNavigate();
     const [lng, setLng] = useState(-70.9);
     const [lat, setLat] = useState(42.35);
     const [zoom, setZoom] = useState(9);
@@ -51,7 +53,7 @@ export default function Checker() {
                         .setLngLat([hospital.longitude, hospital.latitude])
                         .addTo(map.current);
                     marker.getElement().addEventListener('click', () => {
-                        alert(hospital.id);
+                        navigate(`/resources/${hospital.id}`);
                     });
                 });
             })
