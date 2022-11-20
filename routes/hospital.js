@@ -1,5 +1,5 @@
 import express from 'express';
-import hospitals from '../data/hospitals.js';
+import hospitals from '../data/hospital.js';
 var router = express.Router();
 
 /* POST hospital */
