@@ -37,10 +37,13 @@ We will also ease down the process of sharing resources among hospitals and reco
 - Installation:
 
     `npm install`   
+    
+    Copy `.env.example` to `.env` and add the PostgreSQL database, Mapbox API key, and endpoint for the API (likely `http://localhost:3000` if running locally).
+    Use Prima to initialize the database.
 
  - To Start Server:
  
-    `npm run dev`
+    `npm start`
 
 
 ## 🫂Team Members
