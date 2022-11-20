@@ -13,7 +13,7 @@ export default function Home() {
           <h1 className='text-3xl md:text-5xl'>Our Purpose</h1>
           <p className='text-xl py-4 tracking-wider text-justify'>In today’s world, there are many technological advancements in the medical field. Doctors have found ways
     to deal with diseases and provides effective solutions. However, it is very hard for patients to locate hospitals near them that provide the necessary resources, especially
-    in emergencies. MedCare is a web app that is designed to show the available resources at the nearby hospital(s) within the perimeter of the user's location. The user can use filters
+    in emergencies. MedCheck is a web app that is designed to show the available resources at the nearby hospital(s) within the perimeter of the user's location. The user can use filters
     to find the hospital that suits their desired needs. They can view data such as how many units are left, approximate amount of patients that can be served, and more. 
    
     Click below to get started!</p>
@@ -34,7 +34,7 @@ export default function Home() {
         </div>
         <div className=''>
           <h1 className='text-3xl md:text-5xl'>What else do we have</h1>
-          <p className='text-xl md:text-2xl py-4 tracking-wider'>MedCare is a web app where you can:
+          <p className='text-xl md:text-2xl py-4 tracking-wider'>MedCheck is a web app where you can:
           </p>
           <ul className="text-xl">
             <li className="list-disc">Find hospitals near your location</li>
