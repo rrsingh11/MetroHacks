@@ -8,6 +8,7 @@ import logger from 'morgan';
 //var usersRouter = require('./routes/users');
 import hospitalRouter from './routes/hospital.js';
 import resourceCategoryRouter from './routes/resources/category.js';
+import resourceRouter from './routes/resources/resource.js';
 
 var app = express();
 
@@ -25,6 +26,7 @@ app.use(cookieParser());
 //app.use('/users', usersRouter);
 app.use('/hospital', hospitalRouter);
 app.use('/resource/category', resourceCategoryRouter);
+app.use('/resource', resourceRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
