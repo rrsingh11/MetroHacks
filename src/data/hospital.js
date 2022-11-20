@@ -1,7 +1,4 @@
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
-
+/*
 async function create(name, latitude, longitude) {
     return await prisma.hospital.create({
         data: {
@@ -45,7 +42,7 @@ async function rename(id, name, latitude, longitude) {
     });
 }
 
-/*
+/!*
 async function main() {
 
 }
@@ -58,6 +55,14 @@ main()
         console.error(e);
         await prisma.$disconnect();
         process.exit(1);
-    });*/
+    });*!/
 
-export default {create,getAll,getById,remove,rename};
+export default {create,getAll,getById,remove,rename};*/
+const apiEndpoint = import.meta.env.VITE_API_ENDPOINT;
+
+async function getAll() {
+    const data = await fetch(`${apiEndpoint}/hospital`);
+    return await data.json();
+}
+
+export default {getAll};

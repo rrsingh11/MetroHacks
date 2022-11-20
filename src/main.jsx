@@ -8,6 +8,8 @@ import Home from './pages/homepage.jsx'
 import Checker from "./pages/checker";
 import SimpleCard from "./pages/login";
 import SignupCard from "./pages/signup.jsx";
+import Resources from "./pages/resources.jsx";
+import ResourceData from "./pages/adminData.jsx";
 
 const router = createBrowserRouter([
     {
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
     {
         path: "/signup",
         element: <SignupCard/>
+    },
+    {
+        path: "/resources/:hospitalId",
+        element: <Resources/>
+    },
+    {
+        path: "/admin",
+        element: <ResourceData/>
     }
 ])
 

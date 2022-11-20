@@ -1,4 +1,5 @@
-import { PrismaClient } from '@prisma/client';
+import {PrismaClient} from '@prisma/client';
+import resources from "./resource.js";
 
 const prisma = new PrismaClient();
 
@@ -27,6 +28,20 @@ async function getByHospitalAndResource(hospitalId, resourceId) {
     });
 }
 
+async function getByHospital(hospitalId) {
+    const availabilities = await prisma.resourceAvailability.findMany({
+        where: {
+            hospitalId: +hospitalId,
+        }
+    });
+
+    return await Promise.all(availabilities.map(async (a) => {
+        let updated = a;
+        updated.name = (await resources.getById(a.resourceId)).name;
+        return updated;
+    }));
+}
+
 async function removeByHospitalAndResource(hospitalId, resourceId) {
     return await prisma.resourceAvailability.delete({
         where: {
@@ -49,4 +64,4 @@ async function update(hospitalId, resourceId, numAvailable, numPatients) {
     })
 }
 
-export default {create,getByHospitalAndResource,removeByHospitalAndResource,update};
+export default {create,getByHospitalAndResource,getByHospital,removeByHospitalAndResource,update};

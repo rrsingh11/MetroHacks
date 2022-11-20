@@ -1,9 +1,10 @@
-import React, {useEffect, useRef, useState} from "react"
+import React, {useEffect, useRef, useState} from "react";
+import { useNavigate } from "react-router-dom";
 //import ReactDOM from "react-dom";
 import mapboxgl from 'mapbox-gl';
-import hospitals from "./test-hospitals.json";
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 import 'mapbox-gl/dist/mapbox-gl.css';
+import hospitalsData from "../data/hospital.js";
 //import Hero from '../assets/hero.svg'
 //import Feat from '../assets/feat.svg'
 
@@ -27,6 +28,7 @@ function GetMarker(onClick, hospital) {
 export default function Checker() {
     const mapContainer = useRef(null);
     const map = useRef(null);
+    const navigate = useNavigate();
     const [lng, setLng] = useState(-70.9);
     const [lat, setLat] = useState(42.35);
     const [zoom, setZoom] = useState(9);
@@ -44,25 +46,17 @@ export default function Checker() {
             new mapboxgl.Marker().setLngLat(feature.geometry.coordinates).addTo(map.current)
         );*/
 
-        console.log(hospitals);
-        hospitals.forEach((hospital) => {
-            console.log(hospital);
-            /*const ref = React.createRef();
-            ref.current = GetMarker(markerClicked, hospital);*/
-
-
-            /*root.render(
-                <Marker onClick={markerClicked} hospital={hospital}/>,
-                ref.current
-            );*/
-
-            const marker = new mapboxgl.Marker()
-                .setLngLat([hospital.longitude, hospital.latitude])
-                .addTo(map.current);
-            marker.getElement().addEventListener('click', () => {
-                alert(hospital.id);
-            });
-        });
+        (hospitalsData.getAll())
+            .then((hospitals) => {
+                hospitals.forEach((hospital) => {
+                    const marker = new mapboxgl.Marker()
+                        .setLngLat([hospital.longitude, hospital.latitude])
+                        .addTo(map.current);
+                    marker.getElement().addEventListener('click', () => {
+                        navigate(`/resources/${hospital.id}`);
+                    });
+                });
+            })
     });
 
     useEffect(() => {

@@ -1,6 +1,20 @@
-const resources = fetch()
- 
- 
+const apiEndpoint = import.meta.env.VITE_API_ENDPOINT;
+
+async function getByHospital(hospitalId) {
+    const data = await fetch(`${apiEndpoint}/hospital/id/${hospitalId}/resource`);
+    return await data.json();
+}
+
+/*
+async function getResource(resourceId) {
+    const data = await fetch(`${apiEndpoint}/resource/id/${resourceId}`);
+    return await data.json();
+}
+*/
+
+export default {getByHospital};
+
+/*
  export default (   [
         {
             id: 1,
@@ -32,3 +46,4 @@ const resources = fetch()
         }
     ]
  )
+*/
