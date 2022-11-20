@@ -36,7 +36,7 @@ var unless = function(middleware, ...paths) {
 app.use('/hospital', hospitalRouter);
 app.use('/resource/category', resourceCategoryRouter);
 app.use('/resource', resourceRouter);
-app.use(unless(proxy('127.0.0.1:8080'), '/hospital', '/resource/category', '/resource'));
+app.use(unless(proxy('127.0.0.1:8000'), '/hospital', '/resource/category', '/resource'));
 //app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
