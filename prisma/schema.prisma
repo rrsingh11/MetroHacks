@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id         Int      @id @default(autoincrement())
+  name       String?  @db.VarChar(255)
+  email      String   @unique @db.VarChar(255)
+  password   String   @db.VarChar(255)
+  hospitalId Int
+  hospital   Hospital @relation(fields: [hospitalId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model Hospital {
+  id                   Int                    @id @default(autoincrement())
+  name                 String                 @db.VarChar(255)
+  admins               Admin[]
+  resourceAvailabilities ResourceAvailability[]
+}
+
+model Resource {
+  id                   Int                    @id @default(autoincrement())
+  name                 String                 @db.VarChar(255)
+  unit                 String?                @db.VarChar(255)
+  categoryId           Int
+  resourceCategory     ResourceCategory       @relation(fields: [categoryId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  resourceAvailabilities ResourceAvailability[]
+}
+
+model ResourceAvailability {
+  id         Int      @id @default(autoincrement())
+  available  Int?
+  patients   Int?
+  resourceId Int
+  hospitalId Int
+  hospital   Hospital @relation(fields: [hospitalId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  resource   Resource @relation(fields: [resourceId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model ResourceCategory {
+  id       Int        @id @default(autoincrement())
+  name     String     @db.VarChar(255)
+  resources Resource[]
+}
