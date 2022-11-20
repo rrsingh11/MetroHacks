@@ -1,5 +1,6 @@
 import express from 'express';
 import resources from '../../data/resources/resource.js';
+import availabilities from '../../data/resources/availability.js';
 var router = express.Router();
 
 /* POST category */
@@ -25,6 +26,11 @@ router.delete('/id/:resourceId', async function(req, res) {
 /* PUT category */
 router.put('/id/:resourceId', async function(req, res) {
     res.json(await resources.rename(req.params.resourceId, req.body.name, req.body.unit));
+});
+
+/* POST quickupdate */
+router.post('/quickupdate', async function(req, res) {
+    res.json(await availabilities.quickupdate(req.body.hospitalName, req.body.resourceName, req.body.available));
 });
 
 //module.exports = router;
