@@ -33,7 +33,7 @@ We will also ease down the process of sharing resources among hospitals and reco
 
 ## 🫂Team Members
 - [Ritu Raj Singh](https://github.com/rrsingh11)
-- [Ethan](https://github.com/sudoer777)
+- [Ethan Reece](https://github.com/sudoer777)
 - [Vinamara Sharma](https://github.com/vnmrsharma)
 - [Ishwarya Sundhararajan](https://github.com/iSundhararajan)
 
