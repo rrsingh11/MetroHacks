@@ -1,17 +1,17 @@
-//import { useState } from 'react'
-//import reactLogo from './assets/react.svg'
+import React from 'react'
+import { useState } from 'react'
 import './App.css'
+import reactLogo from './assets/react.svg'
 
 import Resources from './pages/resources'
-import React from "react";
 import ResourceData from './pages/adminData';
 import Home from './pages/homepage';
-
+import Profile from './pages/profile'
 function App() {
 
   return (
     <div className="App">
-      <ResourceData />
+      <Profile />
     </div>
   )
 }
