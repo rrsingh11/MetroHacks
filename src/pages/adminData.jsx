@@ -4,7 +4,7 @@ export default function ResourceData() {
     return(
         <>
             <div className='heading--bar'>
-                <h1>Admin Details</h1>
+                <h1>Resource Details</h1>
             </div>
             <form action="localhost:3000/" className='update--form'>
                 <input type="text" name='' placeholder='Resource Name'/>
