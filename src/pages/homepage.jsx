@@ -1,6 +1,6 @@
 import React from "react"
-import Hero from '../assets/hero.svg'
-import Feat from '../assets/feat.svg'
+//import Hero from '../assets/hero.svg'
+//import Feat from '../assets/feat.svg'
 import { Link } from "react-router-dom";
 
 export default function Home() {
@@ -18,19 +18,19 @@ export default function Home() {
    
     Click below to get started!</p>
 
-          <Link to="/items">
+          <Link to="/checker">
             <button className='bg-primary py-2 px-8 rounded-md text-xl md:text-2xl text-white'>Get Started</button>
           </Link>
 
         </div>
         <div className="grid place-items-center py-4 drop-shadow-3xl shadow-black">
-          <img src="./assets/hero.svg" alt="img" width="450" height="450" />
+          <img src={''/*"./assets/hero.svg"*/} alt="img" width="450" height="450" />
         </div>
       </div>
 
       <div className='md:grid md:grid-cols-2 pt-4 items-center'>
         <div className="grid place-items-center py-4 drop-shadow-3xl shadow-black">
-          <img src="./assets/feat.svg" alt="img" width="450" height="450" />
+          <img src={''/*"./assets/feat.svg"*/} alt="img" width="450" height="450" />
         </div>
         <div className=''>
           <h1 className='text-3xl md:text-5xl'>What else do we have</h1>

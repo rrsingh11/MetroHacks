@@ -7,7 +7,8 @@ export default function Profile(props) {
             <h1 className="go--back">&lt; Go back</h1> {/* This is a link to the home page */}
             <h1 className="title">Profile Details</h1>
         </div>
-        <div action="" className='update--info'>
+        <div className='update--info'>
+            <p className="font-bold">Hospital Name</p>
             <p>Name : {props.name}</p>
             <p>Email : {props.email}</p>
             <p>Unique Id : {props.uniqueId}</p>

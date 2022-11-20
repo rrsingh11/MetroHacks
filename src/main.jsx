@@ -10,6 +10,7 @@ import SimpleCard from "./pages/login";
 import SignupCard from "./pages/signup.jsx";
 import Resources from "./pages/resources.jsx";
 import ResourceData from "./pages/adminData.jsx";
+import Profile from "./pages/profile.jsx";
 
 const router = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
     {
         path: "/admin",
         element: <ResourceData/>
+    },
+    {
+        path: "/profile",
+        element: <Profile/>
     }
 ])
 
