@@ -28,7 +28,7 @@ We will also ease down the process of sharing resources among hospitals and reco
 ![Twilio](https://img.shields.io/badge/Twilio-F22F46?style=for-the-badge&logo=Twilio&logoColor=white)&nbsp;
 ![Dialogflow](https://img.shields.io/badge/dialogflow-FF9800?style=for-the-badge&logo=dialogflow&logoColor=white)
 
-##😄 To use it, you will need `node` and `npm` installed globally on your machine.  
+## 😄 To use it, you will need `node` and `npm` installed globally on your machine.  
 
 - Clone this repository:
 
