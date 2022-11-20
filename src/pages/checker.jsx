@@ -1,17 +1,14 @@
 import React, {useEffect, useRef, useState} from "react"
 //import ReactDOM from "react-dom";
-import { createRoot } from "react-dom/client";
 import mapboxgl from 'mapbox-gl';
-import geoJson from "./test-cities.json";
 import hospitals from "./test-hospitals.json";
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 import 'mapbox-gl/dist/mapbox-gl.css';
 //import Hero from '../assets/hero.svg'
 //import Feat from '../assets/feat.svg'
-import { Link } from "react-router-dom";
 
 //const root = createRoot(document.getElementById("root"));
-const Marker = ({ onClick, hospital }) => {
+/*const Marker = ({ onClick, children, hospital }) => {
     const _onClick = () => {
         onClick(feature.id);
     };
@@ -25,7 +22,7 @@ const Marker = ({ onClick, hospital }) => {
 
 function GetMarker(onClick, hospital) {
     return <Marker onClick={onClick} hospital={hospital}/>
-}
+}*/
 
 export default function Checker() {
     const mapContainer = useRef(null);
@@ -50,8 +47,8 @@ export default function Checker() {
         console.log(hospitals);
         hospitals.forEach((hospital) => {
             console.log(hospital);
-            const ref = React.createRef();
-            ref.current = GetMarker(markerClicked, hospital);
+            /*const ref = React.createRef();
+            ref.current = GetMarker(markerClicked, hospital);*/
 
 
             /*root.render(
@@ -59,9 +56,12 @@ export default function Checker() {
                 ref.current
             );*/
 
-            new mapboxgl.Marker(ref.current)
+            const marker = new mapboxgl.Marker()
                 .setLngLat([hospital.longitude, hospital.latitude])
                 .addTo(map.current);
+            marker.getElement().addEventListener('click', () => {
+                alert(hospital.id);
+            });
         });
     });
 
@@ -74,9 +74,9 @@ export default function Checker() {
         });
     });
 
-    const markerClicked = (title) => {
+/*    const markerClicked = (title) => {
         window.alert(title);
-    };
+    };*/
 
     return (
         <div className="md:mx-28 mx-4 pb-12 w-full">
