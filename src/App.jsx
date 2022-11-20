@@ -3,12 +3,15 @@
 import './App.css'
 
 import Resources from './pages/resources'
+import React from "react";
+import ResourceData from './pages/adminData';
+import Home from './pages/homepage';
 
 function App() {
 
   return (
     <div className="App">
-      <Resources />
+      <ResourceData />
     </div>
   )
 }
