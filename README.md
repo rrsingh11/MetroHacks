@@ -28,12 +28,27 @@ We will also ease down the process of sharing resources among hospitals and reco
 ![Twilio](https://img.shields.io/badge/Twilio-F22F46?style=for-the-badge&logo=Twilio&logoColor=white)&nbsp;
 ![Dialogflow](https://img.shields.io/badge/dialogflow-FF9800?style=for-the-badge&logo=dialogflow&logoColor=white)
 
+## 😄 To use it, you will need `node` and `npm` installed globally on your machine.  
 
+- Clone this repository:
+
+    `git clone  https://github.com/rrsingh11/MetroHacks.git `
+
+- Installation:
+
+    `npm install`   
+    
+    Copy `.env.example` to `.env` and add the PostgreSQL database, Mapbox API key, and endpoint for the API (likely `http://localhost:3000` if running locally).
+    Use Prima to initialize the database.
+
+ - To Start Server:
+ 
+    `npm start`
 
 
 ## 🫂Team Members
 - [Ritu Raj Singh](https://github.com/rrsingh11)
-- [Ethan](https://github.com/sudoer777)
+- [Ethan Reece](https://github.com/sudoer777)
 - [Vinamara Sharma](https://github.com/vnmrsharma)
 - [Ishwarya Sundhararajan](https://github.com/iSundhararajan)
 
