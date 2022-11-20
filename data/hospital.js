@@ -2,10 +2,12 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-async function create(name) {
+async function create(name, latitude, longitude) {
     return await prisma.hospital.create({
         data: {
-            name
+            name,
+            latitude,
+            longitude
         }
     });
 }
@@ -30,13 +32,15 @@ async function remove(id) {
     })
 }
 
-async function rename(id, name) {
+async function rename(id, name, latitude, longitude) {
     return await prisma.hospital.update({
         where: {
             id: +id
         },
         data: {
-            name
+            name,
+            latitude: +latitude,
+            longitude: +longitude
         }
     });
 }

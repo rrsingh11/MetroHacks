@@ -5,7 +5,7 @@ var router = express.Router();
 
 /* POST hospital */
 router.post('/', async function(req, res) {
-    res.json(await hospitals.create(req.body.name));
+    res.json(await hospitals.create(req.body.name, req.body.latitude, req.body.longitude));
 });
 
 /* GET hospitals */
@@ -25,7 +25,7 @@ router.delete('/id/:hospitalId', async function(req, res) {
 
 /* PUT hospital */
 router.put('/id/:hospitalId', async function(req, res) {
-    res.json(await hospitals.rename(req.params.hospitalId, req.body.name));
+    res.json(await hospitals.rename(req.params.hospitalId, req.body.name, req.body.latitude, req.body.longitude));
 });
 
 /* GET resource availability */
