@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 //import App from './App'
 import './index.css'
+import './main.css'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Home from './pages/homepage.jsx'
 import Checker from "./pages/checker";

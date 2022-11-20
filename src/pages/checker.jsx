@@ -1,49 +1,89 @@
-import React from "react"
+import React, {useEffect, useRef, useState} from "react"
+//import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
+import mapboxgl from 'mapbox-gl';
+import geoJson from "./test-cities.json";
+import hospitals from "./test-hospitals.json";
+mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
+import 'mapbox-gl/dist/mapbox-gl.css';
 //import Hero from '../assets/hero.svg'
 //import Feat from '../assets/feat.svg'
 import { Link } from "react-router-dom";
 
-export default function Checker() {
+//const root = createRoot(document.getElementById("root"));
+const Marker = ({ onClick, hospital }) => {
+    const _onClick = () => {
+        onClick(feature.id);
+    };
 
     return (
-        <div className='md:mx-28 mx-4 pb-12'>
+        <button onClick={_onClick} className="marker">
+            {children}
+        </button>
+    );
+};
 
-            <div className='md:grid md:grid-cols-2 items-center'>
-                <div className=''>
-                    <h1 className='text-3xl md:text-5xl'>Our Purpose</h1>
-                    <p className='text-xl py-4 tracking-wider text-justify'>In today’s world, there are many technological advancements in the medical field. Doctors have found ways
-                        to deal with diseases and provides effective solutions. However, it is very hard for patients to locate hospitals near them that provide the necessary resources, especially
-                        in emergencies. MedCheck is a web app that is designed to show the available resources at the nearby hospital(s) within the perimeter of the user's location. The user can use filters
-                        to find the hospital that suits their desired needs. They can view data such as how many units are left, approximate amount of patients that can be served, and more.
+function GetMarker(onClick, hospital) {
+    return <Marker onClick={onClick} hospital={hospital}/>
+}
 
-                        Click below to get started!</p>
+export default function Checker() {
+    const mapContainer = useRef(null);
+    const map = useRef(null);
+    const [lng, setLng] = useState(-70.9);
+    const [lat, setLat] = useState(42.35);
+    const [zoom, setZoom] = useState(9);
 
-                    <Link to="/items">
-                        <button className='bg-primary py-2 px-8 rounded-md text-xl md:text-2xl text-white'>Get Started</button>
-                    </Link>
+    useEffect(() => {
+        if (map.current) return; // initialize map only once
+        map.current = new mapboxgl.Map({
+            container: mapContainer.current,
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [lng, lat],
+            zoom: zoom
+        });
 
-                </div>
-                <div className="grid place-items-center py-4 drop-shadow-3xl shadow-black">
-                    <img {/*src="./assets/hero.svg"*/} alt="img" width="450" height="450" />
-                </div>
+        /*geoJson.features.map((feature) =>
+            new mapboxgl.Marker().setLngLat(feature.geometry.coordinates).addTo(map.current)
+        );*/
+
+        console.log(hospitals);
+        hospitals.forEach((hospital) => {
+            console.log(hospital);
+            const ref = React.createRef();
+            ref.current = GetMarker(markerClicked, hospital);
+
+
+            /*root.render(
+                <Marker onClick={markerClicked} hospital={hospital}/>,
+                ref.current
+            );*/
+
+            new mapboxgl.Marker(ref.current)
+                .setLngLat([hospital.longitude, hospital.latitude])
+                .addTo(map.current);
+        });
+    });
+
+    useEffect(() => {
+        if (!map.current) return; // wait for map to initialize
+        map.current.on('move', () => {
+            setLng(map.current.getCenter().lng.toFixed(4));
+            setLat(map.current.getCenter().lat.toFixed(4));
+            setZoom(map.current.getZoom().toFixed(2));
+        });
+    });
+
+    const markerClicked = (title) => {
+        window.alert(title);
+    };
+
+    return (
+        <div className="md:mx-28 mx-4 pb-12 w-full">
+            <div className="sidebar">
+                Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
             </div>
-
-            <div className='md:grid md:grid-cols-2 pt-4 items-center'>
-                <div className="grid place-items-center py-4 drop-shadow-3xl shadow-black">
-                    <img {/*src="./assets/feat.svg"*/} alt="img" width="450" height="450" />
-                </div>
-                <div className=''>
-                    <h1 className='text-3xl md:text-5xl'>What else do we have</h1>
-                    <p className='text-xl md:text-2xl py-4 tracking-wider'>MedCheck is a web app where you can:
-                    </p>
-                    <ul className="text-xl">
-                        <li className="list-disc">Find hospitals near your location</li>
-                        <li className="list-disc">Look at approximate waiting time and doctor availability</li>
-                        <li className="list-disc">Staff can update more information about their affiliated hospital</li>
-                        <li className="list-disc">Check out necessary resources</li>
-                    </ul>
-                </div>
-            </div>
+                <div ref={mapContainer} className="map-container w-full h-96 mb-6"/>
         </div>
     )
 }
