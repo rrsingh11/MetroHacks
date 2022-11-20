@@ -29,7 +29,7 @@ app.use(cookieParser());
 app.use('/hospital', hospitalRouter);
 app.use('/resource/category', resourceCategoryRouter);
 app.use('/resource', resourceRouter);
-app.use('/', proxy('localhost:8080'));
+app.use('/', proxy('127.0.0.1:8080'));
 //app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
