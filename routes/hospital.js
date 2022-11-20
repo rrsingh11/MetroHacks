@@ -33,6 +33,12 @@ router.get('/id/:hospitalId/resource/id/:resourceId', async function(req, res) {
     res.json(await availabilities.getByHospitalAndResource(req.params.hospitalId, req.params.resourceId));
 });
 
+/* GET all resource availability */
+router.get('/id/:hospitalId/resource/', async function(req, res) {
+    res.json(await availabilities.getByHospital(req.params.hospitalId));
+});
+
+
 /* POST resource availability */
 router.post('/id/:hospitalId/resource/id/:resourceId', async function(req, res) {
     res.json(await availabilities.create(req.params.hospitalId, req.params.resourceId));

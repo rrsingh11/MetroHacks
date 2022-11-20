@@ -61,7 +61,6 @@ export default {create,getAll,getById,remove,rename};*/
 const apiEndpoint = import.meta.env.VITE_API_ENDPOINT;
 
 async function getAll() {
-    console.log(apiEndpoint);
     const data = await fetch(`${apiEndpoint}/hospital`);
     return await data.json();
 }
