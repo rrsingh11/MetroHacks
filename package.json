@@ -4,11 +4,19 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "server": "nodemon ./bin/server",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+
+    "@prisma/client": "^4.6.1",
+    "cookie-parser": "^1.4.6",
+    "debug": "^4.3.4",
+    "express": "^4.18.2",
+    "http-errors": "^2.0.0",
+    "morgan": "^1.10.0",
     "@chakra-ui/react": "^2.4.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -21,6 +29,8 @@
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
     "@vitejs/plugin-react": "^2.2.0",
+    "nodemon": "^2.0.20",
+    "prisma": "^4.6.1",
     "vite": "^3.2.3"
   }
 }
